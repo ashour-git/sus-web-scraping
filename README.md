@@ -307,5 +307,4 @@ For questions, issues, or feature requests:
 - [Data Schema](output/QUICK_REFERENCE.txt)
 
 **Star ⭐ this repo if you find it useful!**
-#   s u s - w e b - s c r a p i n g  
- 
+#
