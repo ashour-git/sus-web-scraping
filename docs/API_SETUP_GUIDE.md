@@ -15,6 +15,7 @@ This guide will help you set up professional API-based emissions data collection
 ### Option 1: CDP API (Recommended - FREE)
 
 **Why CDP?**
+
 - ✅ Free tier for research/academic use
 - ✅ 23,000+ companies globally
 - ✅ Verified and validated data
@@ -24,6 +25,7 @@ This guide will help you set up professional API-based emissions data collection
 **Setup Steps:**
 
 1. **Register for CDP API**
+
    ```
    Visit: https://www.cdp.net/
    Click: "Request API Access"
@@ -35,6 +37,7 @@ This guide will help you set up professional API-based emissions data collection
    - You'll receive a key like: `cdp_1234567890abcdef`
 
 3. **Create .env File**
+
    ```bash
    # In your project root (d:\SustainGRC\emission_web_scraping)
    # Create a file named: .env
@@ -43,6 +46,7 @@ This guide will help you set up professional API-based emissions data collection
    ```
 
 4. **Run the Collector**
+
    ```bash
    node src/cdpApiCollector.js
    ```
@@ -53,6 +57,7 @@ This guide will help you set up professional API-based emissions data collection
    ```
 
 **Expected Output:**
+
 ```
 ✅ CDP API data: 500-1000 records (varies by company coverage)
 ✅ ULTRATHINK data: 3,252 records
@@ -67,6 +72,7 @@ This guide will help you set up professional API-based emissions data collection
 ### Option 2: OpenESG (FREE - Limited)
 
 **Setup:**
+
 ```javascript
 // Free tier: 100 requests/month
 // Good for testing, limited for production
@@ -76,11 +82,13 @@ node src/openESGCollector.js
 ```
 
 **Pros:**
+
 - Completely free (no registration)
 - Easy to start
 - Good for testing
 
 **Cons:**
+
 - Limited to 100 requests/month
 - Smaller company database
 - Less verification
@@ -94,11 +102,13 @@ node src/openESGCollector.js
 Contact: Bloomberg Terminal support
 
 **Pros:**
+
 - Most comprehensive data
 - Real-time updates
 - Deep financial integration
 
 **Cons:**
+
 - Very expensive ($2,000+/month)
 - Requires Bloomberg Terminal
 - Overkill for most projects
@@ -110,11 +120,13 @@ Contact: Bloomberg Terminal support
 Contact: Refinitiv sales team
 
 **Pros:**
+
 - Strong Middle East coverage
 - Integration with stock exchanges
 - Good for financial institutions
 
 **Cons:**
+
 - Expensive
 - Requires subscription
 - Complex setup
@@ -144,6 +156,7 @@ node src/mergeMasterDataset.js
 ```
 
 This will:
+
 - Use your existing 3,252 ULTRATHINK records
 - Standardize units
 - Score quality
@@ -157,18 +170,21 @@ This will:
 After merging, your data will be scored:
 
 ### High Quality (80-100 points)
+
 - ✅ CDP API verified data
 - ✅ Complete fields (company, year, scope, value, unit)
 - ✅ Third-party verification
 - 💡 **Use for:** Official reporting, stakeholder presentations
 
 ### Medium Quality (60-79 points)
+
 - ✅ ULTRATHINK high-confidence extractions
 - ✅ Most fields complete
 - ✅ Context-validated
 - 💡 **Use for:** Analysis, trend identification
 
 ### Low Quality (0-59 points)
+
 - ⚠️ ULTRATHINK low-confidence extractions
 - ⚠️ Some fields inferred
 - ⚠️ Limited verification
@@ -202,6 +218,7 @@ After merging, your data will be scored:
 ## ❓ Troubleshooting
 
 ### "CDP_API_KEY not found"
+
 ```bash
 # Make sure .env file exists in project root
 # File location: d:\SustainGRC\emission_web_scraping\.env
@@ -209,11 +226,13 @@ After merging, your data will be scored:
 ```
 
 ### "No records collected from API"
+
 - Check API key is valid
 - Verify company names match CDP database
 - Try with common companies first (Apple, Google, etc.)
 
 ### "Merge script finds no files"
+
 ```bash
 # Make sure these files exist:
 # output/emissions_data_ultrathink.csv (already exists)
@@ -224,13 +243,13 @@ After merging, your data will be scored:
 
 ## 📊 Expected Timeline
 
-| Task | Time | Status |
-|------|------|--------|
-| Register CDP account | 5 min | ⏳ Pending |
-| Get API key (email) | 24-48 hrs | ⏳ Pending |
-| Run CDP collector | 5 min | ⏳ Pending |
-| Merge datasets | 1 min | ⏳ Pending |
-| **Total** | **~2-3 days** | ⏳ Waiting for API key |
+| Task                 | Time          | Status                 |
+| -------------------- | ------------- | ---------------------- |
+| Register CDP account | 5 min         | ⏳ Pending             |
+| Get API key (email)  | 24-48 hrs     | ⏳ Pending             |
+| Run CDP collector    | 5 min         | ⏳ Pending             |
+| Merge datasets       | 1 min         | ⏳ Pending             |
+| **Total**            | **~2-3 days** | ⏳ Waiting for API key |
 
 ---
 

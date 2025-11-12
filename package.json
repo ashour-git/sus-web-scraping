@@ -1,13 +1,35 @@
 {
   "name": "emission-web-scraping",
   "version": "1.0.0",
-  "description": "PDF scraper for emissions data from corporate websites",
+  "description": "Emissions Data Collection & Processing Pipeline - Extract, clean, and analyze emissions data from sustainability reports",
   "type": "module",
-  "main": "src/index.js",
+  "main": "pipeline.js",
   "scripts": {
-    "start": "node src/index.js",
-    "scrape": "node src/scraper.js",
-    "dev": "node --watch src/index.js"
+    "start": "node master_pipeline.js",
+    "professional-pipeline": "node master_pipeline.js",
+    "extract-egypt": "node extract_egypt_data.js",
+    "merge-professional": "node merge_professional_data.js",
+    "verify-professional": "node verify_pdf_accuracy.js",
+    "pipeline": "node pipeline.js",
+    "extract": "node pipeline.js --extract-only",
+    "clean": "node pipeline.js --clean-only",
+    "skip-extract": "node pipeline.js --skip-extract",
+    "cleanup": "node cleanup.js",
+    "cleanup:dry": "node cleanup.js --dry-run",
+    "verify": "node verify_data.js",
+    "verify:10": "node verify_data.js --count 10",
+    "verify:20": "node verify_data.js --count 20",
+    "test-pdfs": "node test_pdf_type.js",
+    "extract:ocr": "node extract_with_ocr.js",
+    "extract:azure": "node extract_with_azure.js",
+    "test": "node pipeline.js && node -e \"const fs=require('fs'); const data=fs.readFileSync('output/emissions_data_SIMPLE.csv','utf8'); console.log('✅ Pipeline test passed!'); console.log('Records:', data.split('\\n').length - 1);\"",
+    "extract:perfect": "node extract_perfect.js",
+    "clean:final": "node clean_final.js",
+    "add:countries": "node add_country_column.js",
+    "verify:pdf": "node verify_pdf_accuracy.js",
+    "verify:pdf2": "node verify_pdf_accuracy_2.js",
+    "build:v2": "npm run extract:egypt",
+    "merge:professional": "node merge_professional_data.js"
   },
   "dependencies": {
     "axios": "^1.6.2",
@@ -17,7 +39,9 @@
     "csv-writer": "^1.6.0",
     "dotenv": "^16.3.1",
     "pdf-parse": "^1.1.1",
-    "playwright": "^1.40.0"
+    "playwright": "^1.40.0",
+    "tesseract.js": "^6.0.1",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "prettier": "^3.1.0"

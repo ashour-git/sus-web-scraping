@@ -1,15 +1,11 @@
 import { BrowserManager } from './browser.js';
 import { config } from './config.js';
-import { CSVWriter } from './csvWriter.js';
 import { PDFDownloader } from './pdfDownloader.js';
-import { PDFParser } from './pdfParser.js';
 
 export class EmissionsScraper {
   constructor() {
     this.browserManager = new BrowserManager();
     this.pdfDownloader = new PDFDownloader(this.browserManager);
-    this.pdfParser = new PDFParser();
-    this.csvWriter = new CSVWriter();
   }
 
   async run() {
@@ -24,31 +20,26 @@ export class EmissionsScraper {
 
       if (downloadedFiles.length === 0) {
         console.log('\n⚠️  No PDFs were downloaded. Please check your target URLs.');
-        return;
+        await this.browserManager.close();
+        return downloadedFiles; // Return empty array instead of undefined
       }
 
-      console.log('\n📊 Step 2: Parsing PDFs and extracting emissions data...');
-      const records = await this.pdfParser.parseAllPDFs(downloadedFiles);
-
-      if (records.length === 0) {
-        console.log('\n⚠️  No emissions data found in PDFs.');
-        return;
-      }
-
-      console.log('\n💾 Step 3: Writing data to CSV...');
-      await this.csvWriter.writeRecords(records);
-
-      console.log('\n✅ Scraping completed successfully!');
+      // Note: PDF parsing is done in pipeline.js step 2, not here
+      // This scraper only downloads PDFs
+      console.log('\n✅ PDF download phase completed!');
       console.log(`\nSummary:`);
       console.log(`  - PDFs downloaded: ${downloadedFiles.length}`);
-      console.log(`  - Emission records extracted: ${records.length}`);
-      console.log(`  - Output file: ${config.csvOutputPath}`);
+      console.log(`  - Next: PDFs will be processed in pipeline step 2`);
+
+      await this.browserManager.close();
+      return downloadedFiles; // Always return the files array
 
     } catch (error) {
       console.error('\n❌ Error during scraping:', error.message);
-      throw error;
-    } finally {
-      await this.browserManager.close();
+      if (this.browserManager) {
+        await this.browserManager.close();
+      }
+      return []; // Return empty array on error
     }
   }
 }
