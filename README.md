@@ -2,7 +2,7 @@
 
 
 
-Professional tool for extracting ESG (Environmental, Social, Governance) metrics from corporate sustainability reports.[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
+Professional tool for extracting ESG (Environmental, Social, Governance) metrics from corporate sustainability reports.[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/) 
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
