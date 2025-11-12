@@ -472,9 +472,22 @@ JSON OUTPUT:
 
 def main():
     """Execute the sustainability data extraction pipeline."""
-
+    
+    import os
+    from dotenv import load_dotenv
+    
+    # Load environment variables
+    load_dotenv()
+    
     # Configuration
-    API_KEY = "AIzaSyBriRw5xkMRnJzPG3MRPPt6ot0IfSTHzyc"
+    API_KEY = os.getenv("GEMINI_API_KEY")
+    
+    if not API_KEY:
+        raise ValueError(
+            "GEMINI_API_KEY not found in environment variables.\n"
+            "Please create a .env file with: GEMINI_API_KEY=your_api_key_here"
+        )
+    
     PDF_FOLDER = r"D:\SustainGRC\emission_web_scraping\downloads\Egypt Sustainability Reports"
     OUTPUT_CSV = "egypt_sustainability_data.csv"
 
@@ -483,6 +496,7 @@ def main():
     print("=" * 70)
     print(f"📁 PDF Folder: {PDF_FOLDER}")
     print(f"💾 Output CSV: {OUTPUT_CSV}")
+    print(f"🔒 API Key: {'*' * 20}{API_KEY[-4:]}")  # Show last 4 chars only
     print("=" * 70)
 
     # Initialize and process

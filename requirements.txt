@@ -1,0 +1,10 @@
+pandas
+pdfplumber
+google-generativeai
+PyPDF2
+python-dotenv
+
+# Optional OCR dependencies
+pytesseract
+pillow
+pymupdf
