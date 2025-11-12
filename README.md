@@ -1,8 +1,6 @@
 # Sustainability Data Extraction Pipeline# 🌍 Professional Emissions Data Pipeline
 
-
-
-Professional tool for extracting ESG (Environmental, Social, Governance) metrics from corporate sustainability reports.[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/) 
+Professional tool for extracting ESG (Environmental, Social, Governance) metrics from corporate sustainability reports.[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -36,11 +34,7 @@ This system processes PDF sustainability reports and extracts structured quantit
 
 - CSV output with standardized schema- **[CLEANING_SUMMARY.md](CLEANING_SUMMARY.md)** - 📊 Data quality improvements and validation results
 
-
-
 ## Installation**❓ Team Questions?**
-
-
 
 ### Prerequisites- **"How do you extract data from PDFs?"** → See [HOW_IT_WORKS.md](HOW_IT_WORKS.md) Section 4
 
@@ -56,7 +50,7 @@ This system processes PDF sustainability reports and extracts structured quantit
 
 ## ⚡ Quick Start (Professional Pipeline)
 
-```bash
+````bash
 
 pip install pandas pdfplumber google-generativeai PyPDF2```bash
 
@@ -196,9 +190,9 @@ The extractor generates CSV files with the following schema:- ✅ **Egyptian Mar
 
 ## Project Structure
 
-```
+````
 
-```emission_web_scraping/
+```````emission_web_scraping/
 
 ├── extractor.py              # Main Python extraction script├── 📄 pipeline.js                    # ⭐ Main orchestration script
 
@@ -248,7 +242,7 @@ API_KEY=your_key_here
 
 Update paths in `extractor.py` or pass as command-line arguments.npm start
 
-```
+```````
 
 ## Quality Assurance
 
@@ -268,8 +262,6 @@ Update paths in `extractor.py` or pass as command-line arguments.npm start
 
 ## Troubleshootingnpm run clean
 
-
-
 ### Common Issues# Skip extraction, use existing raw data
 
 npm run skip-extract
@@ -278,17 +270,17 @@ npm run skip-extract
 
 - Enable OCR support for image-based PDFs# Verify data accuracy (test random samples)
 
-- Verify PDF is not password-protectednpm run verify        # Verify 5 random records
+- Verify PDF is not password-protectednpm run verify # Verify 5 random records
 
-npm run verify:10     # Verify 10 records
+npm run verify:10 # Verify 10 records
 
-**Missing dependencies:**npm run verify:20     # Verify 20 records
+**Missing dependencies:**npm run verify:20 # Verify 20 records
 
-```bash```
+`bash`
 
 pip install -r requirements.txt
 
-```### Data Verification
+````### Data Verification
 
 
 
@@ -398,7 +390,7 @@ npm install
 
 # 3. Verify installation
 node --version  # Should be v18+
-```
+````
 
 ---
 
@@ -924,6 +916,4 @@ _Transforming unstructured sustainability reports into actionable climate intell
 
 **Star ⭐ this repo if you find it useful!**
 
-#    s u s - w e b - s c r a p i n g 
-
-#    s u s - w e b - s c r a p i n g 
+# 
